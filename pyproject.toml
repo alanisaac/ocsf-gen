@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="ocsf-gen"
+version="0.0.1"
+requires-python=">=3.10"
+dependencies = [
+    "pydantic"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "datamodel-code-generator",
+    "isort",
+    "mypy",
+    "pytest",
+]
+
+[project.scripts]
+ocsf-gen = "ocsf_gen.__main__:console_entry"
+
+[tool.isort]
+profile = "black"
