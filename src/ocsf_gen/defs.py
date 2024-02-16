@@ -1,3 +1,6 @@
+from pydantic import BaseModel
+from typing import Optional
+
 from .models.categories import Categories
 from .models.dictionary import Dictionary
 from .models.event import Event
@@ -7,11 +10,14 @@ from .models.object import Object
 from .models.profile import Profile
 
 
-class OcsfSchemaDefinition:
-    categories: Categories
-    dictionary: Dictionary
+class OcsfSchemaDefinition(BaseModel):
+    """
+    Represents a single OCSF schema definition.
+    """
+    categories: Optional[Categories]
+    dictionary: Optional[Dictionary]
+    extension: Optional[Extension]
     events: list[Event]
-    extensions: list[Extension]
     includes: list[Include]
     objects: list[Object]
     profiles: list[Profile]
